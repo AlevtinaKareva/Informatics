@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 data = pd.read_csv('../iris_data.csv')
 fig, axs = plt.subplots(2, 3, figsize=(18, 10))
-axs = axs.flatten()                                # превращаем в плоский список из 6 осей: axs[0]..axs[5]
+axs = axs.flatten()                                # плоский список из 6 осей
 fig.suptitle('Комбинации длин и ширин лепестков и чашелистников (Petal и Sepal)', fontsize=22)
 
 # 1. SepalLength от SepalWidth
@@ -20,11 +20,11 @@ y_ve = np.array(data.loc[data['Species'] == 'Iris-versicolor', 'SepalLengthCm'])
 ax.scatter(x_s, y_s, color='blue', label='setosa')          # точки setosa
 ax.scatter(x_vi, y_vi, color='orange', label='virginica')   # точки virginica
 ax.scatter(x_ve, y_ve, color='green', label='versicolor')   # точки versicolor
-b, a = np.polyfit(x_s, y_s, deg=1)                 # МНК для setosa
+b, a = np.polyfit(x_s, y_s, deg=1)                 # МНК
 ax.plot(x_s, b * x_s + a, color='blue', label=f'y={b:.2f}x+{a:.2f}')
-b, a = np.polyfit(x_vi, y_vi, deg=1)               # МНК для virginica
+b, a = np.polyfit(x_vi, y_vi, deg=1)
 ax.plot(x_vi, b * x_vi + a, color='orange', label=f'y={b:.2f}x+{a:.2f}')
-b, a = np.polyfit(x_ve, y_ve, deg=1)               # МНК для versicolor
+b, a = np.polyfit(x_ve, y_ve, deg=1)
 ax.plot(x_ve, b * x_ve + a, color='green', label=f'y={b:.2f}x+{a:.2f}')
 ax.legend(fontsize=8)                              # легенда
 ax.grid(alpha=0.3)
