@@ -11,7 +11,7 @@ final_positions = all_trajectories[:, -1]  # положение каждой ч�
 rms_vs_n = np.sqrt(np.mean(all_trajectories**2, axis=0)) # среднеквадратичное отклонение по всем частицам
 
 fig, axs = plt.subplots(3, 1, figsize=(8, 10))
-# График 1: траектория одной частицы
+# траектория одной частицы
 axs[0].plot(range(1, N_steps+1), x_single, linewidth=1.2)
 axs[0].axhline(0, color='black', linewidth=0.8)
 axs[0].set_title('Траектория одной частицы: x(N)')
@@ -19,14 +19,14 @@ axs[0].set_xlabel('N')
 axs[0].set_ylabel('x')
 axs[0].grid(True, alpha=0.3)
 
-# График 2: гистограмма финальных положений 1000 частиц
+# финальные положения 1000 частиц
 axs[1].hist(final_positions, bins=30, edgecolor='black', alpha=0.7)
 axs[1].set_title(f'Гистограмма положений после {N_steps} шагов (1000 частиц)')
 axs[1].set_xlabel('x')
 axs[1].set_ylabel('Число частиц')
 axs[1].grid(True, alpha=0.3)
 
-# График 3: среднеквадратичное отклонение и корень из числа испытаний
+# среднеквадратичное отклонение и корень из числа испытаний
 n_vals = np.arange(1, N_steps+1)
 axs[2].plot(n_vals, rms_vs_n, label='Среднеквадратичное отклонение', linewidth=1.5)
 axs[2].plot(n_vals, np.sqrt(n_vals), '--', color='red', label=r'Теория: $\sqrt{N}$', linewidth=1.5)
